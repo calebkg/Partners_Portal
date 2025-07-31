@@ -4,3 +4,4 @@ import { importProvidersFrom } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app-routing.module';
+}).catch((err: unknown) => console.error(err));

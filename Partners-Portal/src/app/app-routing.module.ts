@@ -7,7 +7,7 @@ import { PaymentRequestComponent } from './components/payment-request/payment-re
 import { PaymentSurrenderComponent } from './components/payment-surrender/payment-surrender.component';
 import { ReimbursementsComponent } from './components/reimbursements/reimbursements.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
