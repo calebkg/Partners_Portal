@@ -1,0 +1,41 @@
+<div class="payment-request-container">
+  <app-sidebar [sidebarType]="'finance'" [(open)]="sidebarOpen"></app-sidebar>
+  <div class="main-content">
+    <app-header 
+      title="PAYMENT REQUEST" 
+      subtitle="Finance Services/Payment Request"
+      headerClass="finance"
+      [showBackButton]="false"
+      [(sidebarOpen)]="sidebarOpen">
+    </app-header>
+    <div class="payment-request-content">
+      <div class="payment-request-section">
+        <div class="section-header">
+          <div class="section-title">
+            <h2>PAYMENT REQUEST</h2>
+          </div>
+          <button class="btn btn-primary add-new-btn">
+            <img src="assets/Add.svg" alt="Add" width="24" height="24" />
+            ADD NEW PAYMENT REQUEST
+          </button>
+        </div>
+        <div class="search-section">
+          <div class="search-container">
+            <button class="filter-btn">
+              <img src="assets/Add filter.svg" alt="Add filter" width="10" height="10" style="margin-right: 6px;" /> Add filter
+            </button>
+            <div class="search-box">
+              <img src="assets/Search here.svg" alt="Search here" width="10" height="10" class="search-icon" />
+              <input type="text" placeholder="Search here">
+            </div>
+          </div>
+        </div>
+        <!-- Table and actions go here -->
+        <div class="table-section">
+          <!-- Placeholder for table, to be implemented -->
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div> 
