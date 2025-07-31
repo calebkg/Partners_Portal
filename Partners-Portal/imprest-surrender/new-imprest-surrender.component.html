@@ -1,0 +1,103 @@
+<div class="new-imprest-container">
+  <app-sidebar [sidebarType]="'finance'" [(open)]="sidebarOpen"></app-sidebar>
+  <div class="main-content">
+    <app-header 
+      title="Financial Services" 
+      subtitle="Finance Services/Imprest Surrender"
+      headerClass="finance"
+      [showBackButton]="true"
+      [(sidebarOpen)]="sidebarOpen">
+    </app-header>
+    <div class="new-imprest-content">
+      <div class="new-imprest-section card-effect">
+        <div class="section-header">
+          <h2>IMPREST SURRENDER</h2>
+        </div>
+        <div class="section-body">
+          <div class="form-layout">
+            <div class="left-section">
+              <!-- Personal Details -->
+              <div class="form-section">
+                <h3>Personal Details</h3>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Employee's Name</label>
+                    <input type="text" [(ngModel)]="newSurrender.employeeName" placeholder="Employee's Name">
+                  </div>
+                  <div class="form-group">
+                    <label>Employee's No.</label>
+                    <input type="text" [(ngModel)]="newSurrender.employeeNo" placeholder="Employee's No.">
+                  </div>
+                </div>
+              </div>
+              <!-- Surrender Details -->
+              <div class="form-section">
+                <h3>Surrender Details</h3>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Document Date</label>
+                    <input type="date" [(ngModel)]="newSurrender.documentDate">
+                  </div>
+                  <div class="form-group">
+                    <label>Currency</label>
+                    <input type="text" [(ngModel)]="newSurrender.currencyCode" placeholder="Currency">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Amount</label>
+                    <input type="number" [(ngModel)]="newSurrender.amount" placeholder="Amount">
+                  </div>
+                  <div class="form-group">
+                    <label>Actual Spent</label>
+                    <input type="number" [(ngModel)]="newSurrender.actualSpent" placeholder="Actual Spent">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Difference</label>
+                    <input type="number" [(ngModel)]="newSurrender.difference" placeholder="Difference">
+                  </div>
+                  <div class="form-group">
+                    <label>Status</label>
+                    <input type="text" [(ngModel)]="newSurrender.status" placeholder="Status">
+                  </div>
+                </div>
+              </div>
+              <div class="form-section">
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea [(ngModel)]="newSurrender.description" placeholder="Description" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="right-section">
+              <!-- Supporting Files (optional, for design consistency) -->
+              <div class="files-section file-upload-card">
+                <h3>Upload Supporting files</h3>
+                <p class="files-subtitle">Select and upload the files of your choice</p>
+                <div class="file-upload-area styled-upload-area" (click)="triggerFileUpload()">
+                  <div class="upload-icon">
+                    <img src="assets/cloud-add.svg" alt="Upload" width="48" height="48" />
+                  </div>
+                  <h4>Choose a file or drag & drop it here</h4>
+                  <p>JPEG, PNG, PDF, and MP4 formats, up to 50MB</p>
+                  <button class="browse-btn">Browse File</button>
+                </div>
+                <div class="form-group">
+                  <label>Document Description</label>
+                  <textarea placeholder="Document Description" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-footer">
+          <button class="btn btn-primary" (click)="submitNewSurrender()">Submit</button>
+          <button class="btn btn-success" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div> 
