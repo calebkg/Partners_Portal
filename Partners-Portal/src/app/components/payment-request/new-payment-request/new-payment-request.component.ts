@@ -33,8 +33,8 @@ export class NewPaymentRequestComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   
   sidebarOpen = false;
-  paymentRequestForm: FormGroup;
-  paymentRequestLineForm: FormGroup;
+  paymentRequestForm!: FormGroup;
+  paymentRequestLineForm!: FormGroup;
   showAddLineModal = false;
   isEditMode = false;
   currentEditingLine: PaymentRequestLine | null = null;

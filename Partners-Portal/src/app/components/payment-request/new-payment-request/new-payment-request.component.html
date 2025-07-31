@@ -151,7 +151,7 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let line of paymentRequestLines; let i = index" [class.striped]="i % 2 === 1">
-                    <td>AR_{{ String(i + 31).padStart(4, '0') }}</td>
+                    <td>AR_{{ (i + 31).toString().padStart(4, '0') }}</td>
                     <td>10/5/2025</td>
                     <td>{{ line.currencyCode }}.</td>
                     <td>{{ line.amount | currency:'KSH':'symbol':'1.0-0' }}</td>
