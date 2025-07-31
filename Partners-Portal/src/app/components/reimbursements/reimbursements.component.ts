@@ -29,8 +29,7 @@ export class ReimbursementsComponent implements OnInit, OnDestroy {
   sidebarOpen = false;
   searchTerm = '';
   currentPage = 1;
-  itemsPerPage = 10;
-  totalPages = 10;
+  itemsPerPage = 5;
   
   reimbursementsList: Reimbursement[] = [
     {
@@ -75,6 +74,16 @@ export class ReimbursementsComponent implements OnInit, OnDestroy {
     }
   ];
 
+  get totalPages(): number {
+    return Math.ceil(this.reimbursementsList.length / this.itemsPerPage);
+  }
+  
+  get paginatedData(): Reimbursement[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.reimbursementsList.slice(startIndex, endIndex);
+  }
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -114,5 +123,25 @@ export class ReimbursementsComponent implements OnInit, OnDestroy {
 
   lastPage() {
     this.currentPage = this.totalPages;
+  }
+  
+  getVisiblePages(): number[] {
+    const pages: number[] = [];
+    const maxVisible = 5;
+    
+    if (this.totalPages <= maxVisible) {
+      for (let i = 1; i <= this.totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      const start = Math.max(1, this.currentPage - 2);
+      const end = Math.min(this.totalPages, start + maxVisible - 1);
+      
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+    }
+    
+    return pages;
   }
 }

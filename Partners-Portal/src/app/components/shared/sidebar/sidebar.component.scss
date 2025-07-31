@@ -34,31 +34,23 @@
 
 .logo {
   background: $white;
-  padding: 15px 20px;
+  padding: 20px;
   border-radius: 15px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  min-height: 70px;
+  min-height: 80px;
 }
 
 .logo-icon {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
+  width: 120px;
+  height: auto;
   object-fit: contain;
   background: $white;
   box-shadow: none;
   display: block;
   position: static;
-}
-
-.logo-text {
-  font-size: 14px;
-  font-weight: 300;
-  color: $text-dark;
-  letter-spacing: 1px;
 }
 
 .nav-menu {

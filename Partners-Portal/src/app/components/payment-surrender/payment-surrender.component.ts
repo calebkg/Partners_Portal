@@ -30,8 +30,7 @@ export class PaymentSurrenderComponent implements OnInit, OnDestroy {
   sidebarOpen = false;
   searchTerm = '';
   currentPage = 1;
-  itemsPerPage = 10;
-  totalPages = 10;
+  itemsPerPage = 5;
   
   paymentSurrenderList: PaymentSurrender[] = [
     {
@@ -81,6 +80,16 @@ export class PaymentSurrenderComponent implements OnInit, OnDestroy {
     }
   ];
 
+  get totalPages(): number {
+    return Math.ceil(this.paymentSurrenderList.length / this.itemsPerPage);
+  }
+  
+  get paginatedData(): PaymentSurrender[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.paymentSurrenderList.slice(startIndex, endIndex);
+  }
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -120,5 +129,25 @@ export class PaymentSurrenderComponent implements OnInit, OnDestroy {
 
   lastPage() {
     this.currentPage = this.totalPages;
+  }
+  
+  getVisiblePages(): number[] {
+    const pages: number[] = [];
+    const maxVisible = 5;
+    
+    if (this.totalPages <= maxVisible) {
+      for (let i = 1; i <= this.totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      const start = Math.max(1, this.currentPage - 2);
+      const end = Math.min(this.totalPages, start + maxVisible - 1);
+      
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+    }
+    
+    return pages;
   }
 }
