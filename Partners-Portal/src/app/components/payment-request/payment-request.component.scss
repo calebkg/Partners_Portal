@@ -61,9 +61,9 @@
 }
 
 .add-new-btn {
-  background: $white;
+  background: #f8f9fa;
   color: $primary-red;
-  padding: 12px 20px;
+  padding: 8px 12px;
   border: 2px solid $white;
   border-radius: 8px;
   font-weight: 600;
@@ -72,16 +72,39 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .add-new-btn:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: #e9ecef;
   transform: translateY(-2px);
 }
 
+/* Remove scrollbars */
+.payment-request-container {
+  overflow: hidden;
+}
+
+.main-content {
+  overflow-x: hidden;
+}
+
+.table-container {
+  overflow-x: auto;
+  background: $white;
+  border-radius: 0 0 15px 15px;
+}
+
+.table-container::-webkit-scrollbar {
+  height: 0px;
+  background: transparent;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: transparent;
+}
 .filter-btn {
   background: $white;
   border: 1px solid #e9ecef;
