@@ -1,0 +1,68 @@
+<div class="dashboard-layout">
+  <app-sidebar></app-sidebar>
+  <div class="main-content">
+    <app-header></app-header>
+    <div class="content">
+      <div class="page-header">
+        <h1>Approved Funding</h1>
+        <p>Manage your approved funding requests</p>
+      </div>
+      
+      <div class="funding-table">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Project Name</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of [1,2,3,4,5]">
+              <td>AF-{{1000 + i}}</td>
+              <td>Project {{i}}</td>
+              <td>${{5000 * i}}</td>
+              <td><span class="status approved">Approved</span></td>
+              <td>2025-01-{{10 + i}}</td>
+              <td>
+                <button class="btn-view">View</button>
+                <button class="btn-edit">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <button 
+          class="pagination-btn" 
+          (click)="previousPage()" 
+          [disabled]="currentPage === 1">
+          Previous
+        </button>
+        
+        <span *ngIf="visiblePages[0] > 1" class="pagination-ellipsis">...</span>
+        
+        <button 
+          *ngFor="let page of visiblePages"
+          class="pagination-btn"
+          [class.active]="page === currentPage"
+          (click)="goToPage(page)">
+          {{page}}
+        </button>
+        
+        <span *ngIf="visiblePages[visiblePages.length - 1] < totalPages" class="pagination-ellipsis">...</span>
+        
+        <button 
+          class="pagination-btn" 
+          (click)="nextPage()" 
+          [disabled]="currentPage === totalPages">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="dashboard-layout">
+  <app-sidebar></app-sidebar>
+  <div class="main-content">
+    <app-header></app-header>
+    <div class="content">
+      <div class="page-header">
+        <div class="header-left">
+          <h1>Payment Request</h1>
+          <p>Manage your payment requests</p>
+        </div>
+        <div class="header-right">
+          <button class="add-btn" (click)="addNewPaymentRequest()">
+            ADD NEW PAYMENT REQUEST
+          </button>
+        </div>
+      </div>
+      
+      <div class="request-table">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let i of [1,2,3,4,5]">
+              <td>PR-{{2000 + i}}</td>
+              <td>Payment Request {{i}}</td>
+              <td>${{3000 * i}}</td>
+              <td><span class="status pending">Pending</span></td>
+              <td>2025-01-{{15 + i}}</td>
+              <td>
+                <button class="btn-view">View</button>
+                <button class="btn-edit">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <button 
+          class="pagination-btn" 
+          (click)="previousPage()" 
+          [disabled]="currentPage === 1">
+          Previous
+        </button>
+        
+        <span *ngIf="visiblePages[0] > 1" class="pagination-ellipsis">...</span>
+        
+        <button 
+          *ngFor="let page of visiblePages"
+          class="pagination-btn"
+          [class.active]="page === currentPage"
+          (click)="goToPage(page)">
+          {{page}}
+        </button>
+        
+        <span *ngIf="visiblePages[visiblePages.length - 1] < totalPages" class="pagination-ellipsis">...</span>
+        
+        <button 
+          class="pagination-btn" 
+          (click)="nextPage()" 
+          [disabled]="currentPage === totalPages">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+$primary-blue: #2C4B73;
+$dark-blue: #1C3557;
+$white: #ffffff;
+$light-gray: #f8f9fa;
+
+.header {
+  background: $white;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0 2rem;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header-left {
+  .page-title {
+    color: $dark-blue;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+  }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-info {
+  .user-name {
+    color: $dark-blue;
+    font-weight: 500;
+  }
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(28, 53, 87, 0.2);
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(28, 53, 87, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .logout-icon {
+    width: 18px;
+    height: 18px;
+    stroke: $dark-blue;
+    stroke-width: 2;
+  }
+}
