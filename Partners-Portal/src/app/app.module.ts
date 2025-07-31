@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
@@ -14,8 +14,12 @@ import { PaymentSurrenderComponent } from './components/payment-surrender/paymen
 import { ReimbursementsComponent } from './components/reimbursements/reimbursements.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
+  declarations: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    RouterModule,
     LoginComponent,
     DashboardComponent,
     SidebarComponent,
@@ -25,12 +29,6 @@ import { ReimbursementsComponent } from './components/reimbursements/reimburseme
     PaymentSurrenderComponent,
     ReimbursementsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: []
 })
 export class AppModule { }
