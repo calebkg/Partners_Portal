@@ -10,13 +10,12 @@
   position: fixed;
   left: 0;
   top: 0;
-  height: 80%;
+  height: 80vh;
   border-radius: 0 15px 15px 0;
   box-shadow: 0 10px 30px rgba(28, 53, 87, 0.3);
   z-index: 1100;
   transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
-  height: 100vh;
 }
 
 .sidebar-content {
