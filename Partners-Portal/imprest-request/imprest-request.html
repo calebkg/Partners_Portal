@@ -1,0 +1,74 @@
+<div class="activity-container">
+  <app-sidebar [sidebarType]="'finance'" [(open)]="sidebarOpen"></app-sidebar>
+  
+  <div class="main-content">
+    <app-header 
+      title="Financial Services" 
+      subtitle="Finance Services/Imprest Request"
+      headerClass="finance"
+      [showBackButton]="false"
+      [(sidebarOpen)]="sidebarOpen">
+    </app-header> 
+    <div class="activity-content">
+      <div class="card-header">
+        <h2>Imprest Request</h2>
+        <button class="add-new-btn" (click)="navigateToNewActivity()">
+          <img src="assets/Add.svg" alt="Add"/>
+          ADD NEW IMPREST REQUEST
+        </button>
+      </div>
+       <div class="card-body">
+        <button class="filter-btn">
+          <img src="assets/filter-sm.svg" alt="Add filter" /> Add filter
+        </button>
+        <div class="search-box">
+          <img src="assets/Search here.svg" alt="Search here" class="search-icon" />
+          <input type="text" placeholder="Search here" [(ngModel)]="searchTerm">
+        </div>
+      </div>     
+        <!-- Desktop Table -->
+        <div class="table-container">
+          <table class="activity-table">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Document Date</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Project Code</th>
+                <th>Donor Code</th>       
+                <th>Status</th>
+                <th>Approval Comments</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+             <tbody>
+                <tr *ngFor="let imprest of imprestRequestList; let i = index" [class.striped]="i % 2 === 1">
+                  <td>{{ imprest.no }}</td>
+                  <td>{{ imprest.documentDate }}</td>
+                  <td>{{ imprest.description}}</td>
+                  <!-- <td>{{ imprest.currencyCode}}</td> -->
+                  <td>{{ imprest.amount}}</td>
+                  <td>{{ imprest.globalDimension1Code }}</td>
+                  <td>{{ imprest.globalDimension2Code }}</td>
+                  <td>{{ imprest.status }}</td>
+                  <td>{{ imprest.approvalComment }}</td>
+                  <td class="action-cell">
+                       <button class="action-btn edit-btn" (click)="editRequest(imprest.no)">
+                        <img src="assets/editlogo.svg" alt="Edit" width="24" height="24" />
+                        EDIT
+                      </button>
+                      <button class="action-btn view-btn" (click)="viewRequest(imprest.no)">
+                        <img src="assets/view.svg" alt="View" width="24" height="24" />
+                        VIEW
+                      </button>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+        </div> 
+          <app-footer></app-footer>
+      </div>
+    </div> 
+  </div>
+<!-- </div> -->

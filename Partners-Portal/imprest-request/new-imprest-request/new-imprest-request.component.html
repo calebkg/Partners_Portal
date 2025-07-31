@@ -1,0 +1,273 @@
+<div class="new-imprest-container">
+  <app-sidebar [sidebarType]="'finance'" [(open)]="sidebarOpen"></app-sidebar>
+  <div class="main-content">
+    <app-header 
+      title="Financial Services" 
+      subtitle="Finance Services/Imprest Request"
+      headerClass="finance"
+      [showBackButton]="true"
+      [(sidebarOpen)]="sidebarOpen">
+    </app-header>
+    <div class="new-imprest-content">
+      <form [formGroup]="imprestRequestForm" class="form">
+      <div class="new-imprest-section card-effect">
+        <div class="section-header">
+          <h2>IMPREST REQUEST</h2>
+        </div>
+        <div class="section-body">
+          <div class="form-layout">
+            <div class="left-section">
+              <!-- Personal Details -->
+              <div class="form-section">
+                <h3>Personal Details</h3>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Employee's Name</label>
+                    <input type="text" formControlName="employeeName" placeholder="Employee's Name">
+                  </div>
+                  <div class="form-group">
+                    <label>Employee's No.</label>
+                    <input type="text" formControlName="employeeNo" placeholder="Employee's No.">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>MPESA Number</label>
+                    <input type="text" formControlName="mpesaPhoneNo" placeholder="MPESA Number">
+                  </div>
+                  <div class="form-group">
+                    <label>MPESA Reg. Name</label>
+                    <input type="text" formControlName="employeeName" placeholder="MPESA Reg. Name">
+                  </div>
+                </div>
+              </div>
+              <!-- Project Details -->
+              <div class="form-section">
+                <h3>Project Details</h3>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label>Project Code</label>
+                    <select formControlName="globalDimension1Code" (change)="getGlobalDimension1Value($any($event.target).value)">
+                      <option value="" [selected]=true disabled>Select Project Code</option>
+                      <option *ngFor="let project_code of dimension1_list" [value]="project_code.code">
+                        {{project_code.name}}
+                    </select>  
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Donor Code</label>
+                    <select formControlName="globalDimension2Code">
+                      <option value="" [selected]=true disabled>Select Donor Code</option>
+                      <option *ngFor="let dimension3_code of dimension2_code_list" [value]="dimension3_code.code">
+                        {{dimension3_code.name}}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!-- Dates and Amount -->
+              <div class="form-section">
+                <div class="form-row">
+                  <div class="form-group input-icon-wrapper">
+                    <label>Activity Start Date</label>
+                    <input type="date" formControlName="startDate">
+                  </div>
+                  <div class="form-group">
+                    <label>Activity End Date</label>
+                    <input type="date" formControlName="endDate">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Currency</label>
+                     <select formControlName="currencyCode"> dimension2_code_list
+                      <option value="" [selected]=true>Select Currency</option>
+                      <option *ngFor="let currency_code of currency_code_list" [value]="currency_code.code">
+                        {{currency_code.description}}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Amount</label>
+                    <input type="text" formControlName="amount" placeholder="Requested Amount">
+                  </div>
+                </div>
+              </div>
+              <!-- Description -->
+              <div class="form-section">
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea formControlName="description" placeholder="Description" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="right-section">
+              <!-- Supporting Files -->
+              <div class="files-section file-upload-card">
+                <h3>Upload Supporting files</h3>
+                <p class="files-subtitle">Select and upload the files of your choice</p>
+                <div class="file-upload-area styled-upload-area" (click)="triggerFileUpload()">
+                  <div class="upload-icon">
+                    <img src="assets/cloud-add.svg" alt="Upload" width="48" height="48" />
+                  </div>
+                    <input type="file" #fileInput
+                     accept=".jpeg,.jpg,.png,.pdf,.mp4"
+                     (change)="onFileSelected($event)"
+                     style="display: none"
+                    />
+                  <h4>Choose a file or drag & drop it here</h4>
+                  <p>JPEG, PNG, PDF, and MP4 formats, up to 50MB</p>
+                  <button class="browse-btn">Browse File</button>
+                </div>
+                <div class="form-group">
+                  <label>Document Description</label>
+                  <textarea placeholder="Document Description" rows="5"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add New Imprest Line Button -->
+                <button class="add-new-btn" (click)="openAddLineModal()">
+                  <img src="assets/Add.svg" alt="add" width="24" height="24" />
+                  ADD NEW IMPREST LINE
+                </button>               
+                <!-- Imprest Lines Table -->
+                <div class="imprest-table-container">
+                  <table class="imprest-table">
+                    <thead>
+                      <tr>
+                        <th class="hidden">No.</th>
+                        <th>Imprest Code</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Amount LCY</th>
+                        <th>Unit Cost</th>
+                        <th>Quantity</th>
+                        <th>Donor Code</th>
+                        <th>Project Code</th>
+                        <th>Sub-project Code</th>
+                        <th>Activity Code</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let line of imprest_request_lines">
+                        <td>{{ line.transactionCode }}</td>
+                        <td>{{ line.description }}</td>
+                        <td>{{ line.amount}}</td>
+                        <td>{{ line.amountSpent }}</td>
+                        <td>{{ line.unitCost }}</td>
+                        <td>{{ line.quantity }}</td>
+                        <td>{{ line.globalDimension1Code }}</td>
+                        <td>{{ line.globalDimension2Code }}</td>
+                        <td>{{ line.shortcutDimension3Code }}</td>
+                        <td>{{ line.shortcutDimension4Code }}</td>
+                        <td style="width: 90px;">
+                          <div class="action-buttons">
+                            <button class="btn-sm edit-btn" (click)="openEditModal(line)">
+                              <img src="assets/editlogo.svg" />
+                            </button>
+                            <button class="btn-sm delete-btn" (click)="deleteImprestLine()">
+                              <img src="assets/delete.svg"/>
+                            </button>
+                          </div>
+                         </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        <div class="section-footer">
+          <button class="add-new-btn" (click)="updateImprestRequest()" >submit</button>
+          <button class="btn btn-success" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+      </form>
+    </div>
+    <app-footer></app-footer>
+ </div>
+</div>
+
+ <!-- Add/Edit Imprest Line Modal with Glossy Blur Background -->
+  <div class="modal-overlay" *ngIf="showAddLineModal" (click)="closeAddLineModal()">
+  <div class="modal-content add-line-modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Imprest Line</h2>
+    </div>
+
+    <!-- Make sure the form exists before rendering -->
+    <form [formGroup]="imprestRequestLinesForm">
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Imprest Code</label>
+          <select formControlName="transactionCode"> 
+             <option value="" [selected]=true disabled>Select Imprest Code</option>
+             <option *ngFor="let dimension1_code of imprest_code_list" [value]="dimension1_code.code">
+              {{dimension1_code.description}}
+          </select>
+        </div> 
+        <div class="form-row">
+          <div class="form-group">
+            <label>Unit Cost</label>
+            <input type="text" formControlName="unitCost" placeholder="0" />
+          </div>
+            <div class="form-group">
+            <label>Quantity</label>
+            <input type="text" formControlName="quantity" placeholder="0" />
+          </div>
+        </div>
+        <h3>Project Details</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Project Code</label>
+            <select formControlName="globalDimension1Code" (change)="getGlobalDimension1Value($any($event.target).value)">
+              <option value="" [selected]=true disabled>Select Project Code</option>
+              <option *ngFor="let project_code of dimension1_list" [value]="project_code.code">
+              {{project_code.name}}
+            </select> 
+          </div>
+         <div class="form-group">
+          <label>Donor Code</label>
+           <select formControlName="globalDimension2Code">
+            <option value="" [selected]=true disabled>Select Donor Code</option>
+            <option *ngFor="let dimension2_code of dimension2_code_list" [value]="dimension2_code.code">
+             {{dimension2_code.name}}
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Sub-project Code</label>
+            <select formControlName="shortcutDimension3Code">
+              <option value="" [selected]=true disabled>Select Sub-project Code</option>
+              <option *ngFor="let dimension3_code of program_area_code_aist" [value]="dimension3_code.code">
+              {{dimension3_code.name}}
+            </select> 
+          </div>
+           <div class="form-group">
+            <label>Activity Code</label>
+            <select formControlName="shortcutDimension4Code">
+              <option value="" [selected]=true disabled>Select Activity</option>
+              <option *ngFor="let dimension4_code of dimension4_code_list" [value]="dimension4_code.code">
+              {{dimension4_code.name}}
+            </select> 
+          </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group">
+          <label>Description</label>
+          <textarea formControlName="description" placeholder="Description" rows="3"></textarea>
+        </div>
+        </div>
+       </div>
+
+      <!-- Submit / Cancel buttons if needed -->
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success" (click)="submitLine()">
+          {{ isEditMode ? 'Update' : 'Save' }}
+        </button>
+        <button type="button" (click)="closeAddLineModal()" class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
