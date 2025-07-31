@@ -18,4 +18,16 @@ body {
   font-family: 'Poppins', Arial, sans-serif;
   background: $primary-bg;
   color: $text-dark;
+  overflow-x: hidden;
+}
+
+/* Hide all scrollbars globally but keep functionality */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

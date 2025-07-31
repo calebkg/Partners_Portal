@@ -11,7 +11,7 @@
 
 .main-content {
   flex: 1;
-  margin-left: 260px;
+  margin-left: 280px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -82,29 +82,22 @@
   transform: translateY(-2px);
 }
 
-/* Remove scrollbars */
-.payment-request-container {
-  overflow: hidden;
-}
-
-.main-content {
-  overflow-x: hidden;
-}
-
 .table-container {
   overflow-x: auto;
   background: $white;
   border-radius: 0 0 15px 15px;
 }
 
+/* Hide scrollbars but keep functionality */
 .table-container::-webkit-scrollbar {
-  height: 0px;
-  background: transparent;
+  display: none;
 }
 
-.table-container::-webkit-scrollbar-thumb {
-  background: transparent;
+.table-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+
 .filter-btn {
   background: $white;
   border: 1px solid #e9ecef;
