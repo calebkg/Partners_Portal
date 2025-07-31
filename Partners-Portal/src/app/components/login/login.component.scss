@@ -185,6 +185,18 @@
   text-decoration: underline;
 }
 
+.register-link {
+  color: #1C3557;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
 .footer {
   text-align: center;
   padding: 20px 0;
