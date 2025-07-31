@@ -20,11 +20,15 @@ export class LoginComponent {
   onLogin() {
     // Simple validation - in real app, this would be proper authentication
     if (this.email && this.password) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/payment-request']);
     }
   }
 
   goToReset() {
     this.router.navigate(['/reset-password']);
+  }
+  
+  goToRegister() {
+    this.router.navigate(['/register']);
   }
 }

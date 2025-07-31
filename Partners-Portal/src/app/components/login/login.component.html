@@ -1,27 +1,15 @@
+<!DOCTYPE html>
 <div class="login-container">
   <!-- Desktop Layout -->
   <div class="login-left desktop-only">
     <div class="logo-container">
-      <div class="logo">
-         <img class="logo-icon" src="assets/naturalstatelogo.svg" alt="Natural State Logo" />
-        <span class="logo-text">NATURAL STATE</span>
+      <div class="logo-card">
+        <img class="logo-icon" src="assets/login-logo.png" alt="inSupplyHealth Logo" />
       </div>
     </div>
   </div>
-  <div class="login-divider desktop-only"></div>
-  
-  <!-- Mobile Background -->
-  <div class="mobile-background mobile-only"></div>
   
   <div class="login-right">
-    <!-- Mobile Logo (inside form) -->
-    <div class="mobile-logo mobile-only">
-      <div class="logo">
-        <img class="logo-icon" src="assets/naturalstatelogo.svg" alt="Natural State Logo" />
-        <span class="logo-text">NATURAL STATE</span>
-      </div>
-    </div>
-    
     <div class="login-form">
       <h1>Welcome Back</h1>
       <p class="subtitle">Enter your email and password to sign in</p>
@@ -51,13 +39,14 @@
       </form>
       
       <div class="forgot-password">
-        Forgot Password? <a (click)="goToReset()" class="reset-link">Reset</a>
+        Forgot Password? <a (click)="goToReset()" class="reset-link">Reset</a> | 
+        <a (click)="goToRegister()" class="reset-link">Register</a>
       </div>
     </div>
     
     <div class="footer">
       <span class="footer-text">
-        <strong>Natural State</strong> © 2025. | Powered by 
+        <strong>InSupplyHealth</strong> © 2025. | Powered by 
         <a href="https://sysre.co.ke/" target="_blank" class="footer-link">Systems Reengineered Ltd.</a>
       </span>
     </div>

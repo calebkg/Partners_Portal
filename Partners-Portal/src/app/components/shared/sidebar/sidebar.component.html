@@ -2,7 +2,7 @@
 <div class="sidebar" [ngClass]="{ 'sidebar-open': open }">
   <div class="logo-container">
     <div class="logo">
-      <img class="logo-icon" src="assets/naturalstatelogo.svg" alt="inSupplyHealth Logo" />
+      <img class="logo-icon" src="assets/login-logo.png" alt="inSupplyHealth Logo" />
       <span class="logo-text">inSupplyHealth</span>
     </div>
   </div>
@@ -10,13 +10,6 @@
   <!-- Partners Portal Sidebar -->
   <div class="sidebar-content">
     <nav class="nav-menu">
-      <a routerLink="/dashboard" class="nav-item">
-        <i class="icon-dashboard">
-          <img src="assets/SP dashboard.svg" alt="Dashboard" width="20" height="20">
-        </i>
-        Dashboard
-      </a>
-      
       <a routerLink="/approved-funding" class="nav-item">
         <i class="icon-approved">
           <img src="assets/SP My approved Leaves.svg" alt="Approved Funding" width="20" height="20">
@@ -31,14 +24,14 @@
         Payment Request
       </a>
       
-      <a routerLink="/payment-surrender" class="nav-item">
+      <a routerLink="/payment-surrender" routerLinkActive="active" class="nav-item">
         <i class="icon-surrender">
           <img src="assets/SP Imprest Surrender.svg" alt="Payment Surrender" width="20" height="20">
         </i>
         Payment Surrender
       </a>
       
-      <a routerLink="/reimbursements" class="nav-item">
+      <a routerLink="/reimbursements" routerLinkActive="active" class="nav-item">
         <i class="icon-reimbursements">
           <img src="assets/SP My PendingLeaves.svg" alt="Reimbursements" width="20" height="20">
         </i>
