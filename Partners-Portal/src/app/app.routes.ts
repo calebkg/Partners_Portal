@@ -5,6 +5,8 @@ import { NewPaymentRequestComponent } from './components/payment-request/new-pay
 import { PaymentSurrenderComponent } from './components/payment-surrender/payment-surrender.component';
 import { NewPaymentSurrenderComponent } from './components/payment-surrender/new-payment-surrender/new-payment-surrender.component';
 import { ApprovedFundingComponent } from './components/approved-funding/approved-funding.component';
+import { ReimbursementsComponent } from './components/reimbursements/reimbursements.component';
+import { NewReimbursementComponent } from './components/reimbursements/new-reimbursement/new-reimbursement.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,5 +19,7 @@ export const routes: Routes = [
   { path: 'payment-surrender', component: PaymentSurrenderComponent },
   { path: 'new-payment-surrender', component: NewPaymentSurrenderComponent },
   { path: 'new-payment-surrender/:id', component: NewPaymentSurrenderComponent },
-  { path: 'reimbursements', component: PaymentRequestComponent }, // Using payment request as placeholder
+  { path: 'reimbursements', component: ReimbursementsComponent },
+  { path: 'new-reimbursement', component: NewReimbursementComponent },
+  { path: 'new-reimbursement/:id', component: NewReimbursementComponent },
 ];
