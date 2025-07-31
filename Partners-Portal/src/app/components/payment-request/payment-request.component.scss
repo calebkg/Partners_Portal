@@ -61,9 +61,9 @@
 }
 
 .add-new-btn {
-  background: #f8f9fa;
+  background: $white;
   color: $primary-red;
-  padding: 8px 12px;
+  padding: 12px 20px;
   border: 2px solid $white;
   border-radius: 8px;
   font-weight: 600;
@@ -72,13 +72,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .add-new-btn:hover {
-  background: #e9ecef;
+  background: rgba(255, 255, 255, 0.9);
   transform: translateY(-2px);
 }
 
