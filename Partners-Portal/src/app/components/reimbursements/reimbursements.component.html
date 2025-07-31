@@ -99,12 +99,14 @@
       <!-- Pagination -->
       <div class="pagination">
         <button class="page-btn" [disabled]="currentPage === 1" (click)="previousPage()">Prev</button>
-        <button *ngFor="let page of getVisiblePages()" 
+        <button *ngFor="let page of visiblePages" 
                 class="page-btn" 
                 [class.active]="page === currentPage"
                 (click)="goToPage(page)">
           {{ page }}
         </button>
+        <span class="page-dots" *ngIf="totalPages > 5">...</span>
+        <button class="page-btn" *ngIf="totalPages > 5 && currentPage < totalPages - 2" (click)="goToPage(totalPages)">{{ totalPages }}</button>
         <button class="page-btn" [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
       </div>
     </div>

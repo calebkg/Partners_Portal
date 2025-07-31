@@ -1,14 +1,12 @@
-<!DOCTYPE html>
 <div class="login-container">
-  <!-- Desktop Layout -->
-  <div class="login-left desktop-only">
+  <!-- Left side with logo -->
+  <div class="login-left">
     <div class="logo-container">
-      <div class="logo-card">
-        <img class="logo-icon" src="assets/login-logo.png" alt="inSupplyHealth Logo" />
-      </div>
+      <img src="assets/login-logo.png" alt="inSupplyHealth Logo" class="logo-image" />
     </div>
   </div>
   
+  <!-- Right side with form -->
   <div class="login-right">
     <div class="login-form">
       <h1>Welcome Back</h1>
@@ -16,31 +14,28 @@
       
       <form (ngSubmit)="onLogin()">
         <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="Your email address">
+          <label>Email Address</label>
+          <input type="email" [(ngModel)]="email" name="email" placeholder="Your email address">
         </div>
         
         <div class="form-group">
-          <label class="form-label">Email Password</label>
-          <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Your Password">
+          <label>Email Password</label>
+          <input type="password" [(ngModel)]="password" name="password" placeholder="Your Password">
         </div>
         
         <div class="form-group checkbox-group">
-          <label class="checkbox-label">
-            <label class="toggle-switch">
-              <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe">
-              <span class="toggle-slider"></span>
-            </label>
-            <span class="remember-text">Remember me</span>
+          <label class="checkbox-container">
+            <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe">
+            <span class="checkmark"></span>
+            Remember me
           </label>
         </div>
         
-        <button type="submit" class="btn btn-success w-100">LOG IN</button>
+        <button type="submit" class="btn-login">LOG IN</button>
       </form>
       
       <div class="forgot-password">
-        Forgot Password? <a (click)="goToReset()" class="reset-link">Reset</a> | 
-        <a (click)="goToRegister()" class="reset-link">Register</a>
+        Forgot Password? <a (click)="goToReset()" class="reset-link">Reset</a>
       </div>
     </div>
     
